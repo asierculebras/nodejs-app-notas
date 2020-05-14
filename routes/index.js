@@ -7,5 +7,9 @@ router.get("/", (req, res) => {
     res.send('INDEx');
 });
 
+router.get("/about", (req, res) => {
+    res.send('ABOUT');
+});
+
 //exporto el ficehro.
 module.exports = router;

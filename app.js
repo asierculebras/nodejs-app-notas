@@ -11,6 +11,7 @@ const session = require('express-session');
 
 /* ####   INIZIALIZATIONS   ####*/ 
 const app = express();
+require('./database');
 
 
 
@@ -49,12 +50,25 @@ app.use(session({
     saveUninitialized: true
     }));
 
+
+
+
+
 /* ####   ROUTES   ####*/ 
 
     //con esto le hago saber a mi server donde están las rutas de mi aplicación. y los requiero.
 app.use(require( path.join(__dirname, 'routes/index')));
 app.use(require(path.join(__dirname, 'routes/users')));
 app.use(require(path.join(__dirname, 'routes/notes')));
+
+
+
+
+
+/* ####   STATIC FILES   ####*/ 
+//le digo donde estan los resursos del servidor
+app.use(express.static(path.join(__dirname, 'public')));
+
 
 
 /* ####   SERVER LISTENER   ####*/ 
