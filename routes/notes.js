@@ -4,6 +4,11 @@ const express = require("express");
 const router = express.Router();
 
 
+// Get add a Notes
+router.get("/notes/add", (req, res) => {
+    res.render('notes/new-notes');
+});
+
 // Get All Notes
 router.get("/notes", (req, res) => {
     res.send('NOTES');
