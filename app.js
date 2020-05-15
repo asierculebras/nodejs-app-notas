@@ -24,7 +24,7 @@ require('./database');
 app.set('port', process.env.PORT || 3000);
     //le digo a app donde está la carpeta views.
 app.set('views', path.join(__dirname, 'views'));
-    //configuración de la configuración de las plantillas de nuestra aplicación.
+    //de digo a app la configuración del motor de  plantillas que vamos a usar en nuestra aplicación.
 app.engine('.hbs', exphbs({
     defaultLayout: 'main',
     layoutsDir: path.join(app.get('views'), 'layouts'),

@@ -6,11 +6,11 @@ const router = express.Router();
 
 
 router.get("/users/signin", (req, res) => {
-    res.send('Ingresando en la app')
+    res.render('users/signin');
 });
 
 router.get("/users/signup", (req, res) => {
-    res.send('registrate en la app')
+    res.render('users/signup');
 });
 
 //exporto el ficehro.
