@@ -3,15 +3,19 @@ const express = require("express");
 //un objeto que me facilita la creación de rutas
 const router = express.Router();
 
+// me traigo el modelo de datos de mongoose
+const Pacientes = require('../models/Pacientes')
+
 
 // Get de añadir una nuecva Notes
 router.get("/notes/add", (req, res) => {
     res.render('notes/new-notes');
 });
 
-//ruta para capturar el POST de la nota
-router.post("/notes/new-note", (req, res) =>{0
-    console.log(req.body)
+//ruta para capturar el POST de la nota y lepongo la parabra async por que dentro hay cosas que pueden llevar datos y quiero que se ejecute otras cosas mientras.
+//esas tareas asincronas se realizan.
+router.post("/notes/new-note", async (req, res) =>{0
+    console.log('lo que se ha enviado es ',req.body)
     //meto en una constante cada uno de los valores que el form me devuelve.
     const {nombre, apellidos, telefono, description, nombreMedida, hora} = req.body
     //creo una variable con lo errores que puede haber
@@ -31,13 +35,20 @@ router.post("/notes/new-note", (req, res) =>{0
             errors,nombre,apellidos,telefono,description,nombreMedida,hora
         })
     } else{
-    res.send('ok')
+        //creo un objeto newNotes con un schema de datos mongoose Pacientes con los datos antes capturados. 
+        const newNote = new Pacientes({nombre, apellidos, telefono, description, nombreMedida, hora})
+        console.log('el nuevo objeto creado enla base de datos es: ',newNote)
+        //guardo los datos en la base de datos. como esto es asincrono le pongo await
+        await newNote.save().then (
+            console.log('paciente guardado')
+            )
+        res.redirect('/notes')
     }
 })
 
 // Get All Notes
 router.get("/notes", (req, res) => {
-    res.send('NOTES');
+    res.send('Pacientes de la base de datos (queda por cambiar la el nombre de la ruta)');
 });
 
 //exporto el ficehro.

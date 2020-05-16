@@ -5,6 +5,8 @@ const exphbs = require('express-handlebars');
 const methodOverride = require('method-override');
 //guardar los datos de los usuarios en una constante.
 const session = require('express-session');
+// para que se puedan gestionar variables de entorno y en concreto la variable que alberga la dirección de la base de datos de Heroku
+require('dotenv').config()
 
 
 
