@@ -62,7 +62,7 @@ app.use(session({
 app.use(require( path.join(__dirname, 'routes/index')));
 app.use(require(path.join(__dirname, 'routes/users')));
 app.use(require(path.join(__dirname, 'routes/notes')));
-
+app.use(require(path.join(__dirname, 'routes/pacientes')));
 
 
 
